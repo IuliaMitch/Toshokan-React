@@ -1,0 +1,138 @@
+.Header {
+    max-width: 1110px;
+    margin: 0 auto 5rem 2rem;
+    position: relative;
+    width: 100wh;
+  }
+  
+  .row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0 35px 0;
+  }
+  
+  .logo-icone {
+    margin: 0.4rem;
+    border-radius: 2rem;
+    position: absolute;
+    left: -20px;
+    top: -15px;
+    transition: .2s all ease-in-out;
+    box-shadow: 0px 0px 15px var(--third-color); 
+
+  }
+  
+  .logo-icone:hover {
+    transform:scale(1.1)
+  }
+  .Logo {
+    cursor: pointer;
+    background-color: var(-primary-color);
+    display: flex;
+    align-items: center;
+    width: 340px;
+    height: 45px;
+    border: 1px solid var(--third-color);
+    border-radius: 10px;
+    transition: .2s all ease-in-out;
+    box-shadow: 0px 0px 15px var(--third-color); 
+  }
+  .Logo:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-titulo {
+    color: #560966;
+    position: absolute;
+    left: 85px;
+    font-family: "Exo";
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+  
+  @media (max-width: 840px) {
+    .logo-titulo {
+      font-size: 1em;
+    }
+  }
+  
+  .Option {
+    display: flex;
+    padding: .1rem;
+    align-items: center;
+  }
+  
+  
+  @media (max-width: 1220px) {
+    .Header {
+      max-width: 720px;
+    }
+  }
+  
+  @media (max-width: 840px) {
+    .Header {
+      max-width: 320px;
+      
+    }
+    .Option {
+      width: 20%;
+      margin-left: 1rem;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .Header{
+      display: flex;
+      flex-direction: column;
+    }
+    .Option {
+      width: 20%;
+      margin: 3rem;
+      display: flex;
+      left: 1rem;
+    }
+    .row {
+      display: flex;
+      flex-direction: column;
+    }
+  
+  }
+  
+  @media (max-width: 510px) {
+    .Header {
+      max-width: 250px;
+    }
+  
+    .row {
+      column-gap: 20px;
+    }
+  
+    .logo-titulo {
+      font-size: .8rem;
+    }
+    .Logo {
+      width: 200px;
+    }
+  }
+
+  .button-cart {
+    height: 30px;
+    width: 30px;
+    padding: .1rem;
+    border-radius: .3rem;
+    background-color: white;
+    transition: .2s all ease-in-out;
+    border: 1px solid #560966;
+    box-shadow: 0px 0px 15px var(--third-color);
+    cursor: pointer;
+    margin: .5rem;
+  }
+  .button-cart:hover {
+    transform: scale(1.1);
+    
+  }
+ .bi {
+    width: 1.5rem;
+  }
+  
