@@ -31,6 +31,7 @@
     justify-content: space-around;
     margin: 0.5rem;
     font-weight: 600;
+    font-family: "Exo";
   }
   
   .obra-card-item {
@@ -135,18 +136,24 @@
   }
 
   .obra-list-item-badge {
-    background-color: greenyellow;
-    width: 20px;
-    height: 20px;
+    background-color: #720f8b;
+    height: 10px;
     text-align: center;
     vertical-align: middle;
-    position: absolute;
     color: black;
     font-size: .8em;
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    top: -9px;
-    left: -9px;
+    border-radius: 45%;
+    top: -15px;
+    left: -15px;
+    width: 10px;
+    padding: 5px;
+    box-shadow: 2px 0px 15px #d52fff5b;
+    transition: all ease-in-out .2s;
+  }
+  .obra-list-item-badge:hover {
+    transform: scale(1.2);
   }

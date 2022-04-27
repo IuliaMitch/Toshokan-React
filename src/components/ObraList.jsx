@@ -1,6 +1,7 @@
 import star from '../assets/icons/star.svg'
 import '../ObraList.css'
 import { obras } from "../mocks/obra.js"
+import React, { useState } from "react";
 
 const ObraList = () => {
 
@@ -16,7 +17,7 @@ const ObraList = () => {
     return (<div className="obra-list">
         { obras.map((obra, index) => 
             <div className="obra-list-item" key={`obra-list-item-${index}`}>
-                <span className="obra-list-item-bagde">{obraSelecionada[index] || 0}</span>
+                <span className="obra-list-item-badge">{obraSelecionada[index] || 0}</span>
             <div>
                 <div className="obra-list-item-nome">{obra.nome}</div>
                 <div className="obra-list-item-nota">
