@@ -17,7 +17,7 @@ const Header = () => {
         </div>
         <div className="header-options Option">
           <button className="button-cart">
-            <img class="bi" src={cart} />
+            <img className="bi" src={cart} />
           </button>
         </div>
       </div>
