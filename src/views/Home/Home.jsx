@@ -1,6 +1,6 @@
 import './Home.css'
-import ObraList from './ObraList'
-import Header from './Header'
+import ObraList from '../../components/Obralist/ObraList'
+import Header from '../Header/Header'
 
 
 const Home = () => {

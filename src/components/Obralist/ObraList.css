@@ -108,30 +108,50 @@
 
   .actions {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 100%;
   }
   
   .btn {
+    width: 100%;
+
+  }
+  
+  .actions-add {
     background-color: transparent;
     padding: 0.1rem;
     font-weight: 600;
     border-radius: 0.3rem;
     cursor: pointer;
-    width: 100%;
     display: flex;
     justify-content: center;
     transition: all 0.2s ease-in-out;
-  }
-  
-  .actions-editar {
     padding: .4rem;
     border: 1px solid #6d54fd;
     color:#6d54fd;
   }
   
-  .actions-editar:hover{
+  .actions-add:hover{
     background-color: #6d54fd5b;
+    color: white;
+  }
+
+  .actions-remove {
+    background-color: transparent;
+    padding: 0.1rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    padding: .4rem;
+    border: 1px solid #ff0000;
+    color:#ff0000;
+  }
+  
+  .actions-remove:hover{
+    background-color: #fd54545b;
     color: white;
   }
 
@@ -149,7 +169,7 @@
     border-radius: 45%;
     top: -15px;
     left: -15px;
-    width: 10px;
+    width: 15px;
     padding: 5px;
     box-shadow: 2px 0px 15px #d52fff5b;
     transition: all ease-in-out .2s;
