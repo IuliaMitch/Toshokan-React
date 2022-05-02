@@ -1,62 +1,71 @@
-import './ObraList.css'
+import "./ObraList.css";
 import { useState, useEffect } from "react";
-import { ObraService } from 'services/ObraService';
-import ObraListCard from '../ObraListCard/ObraListCard';
+import { ObraService } from "services/ObraService";
+import ObraListCard from "../ObraListCard/ObraListCard";
+import ObrasDetail from "../ObrasDetail/ObrasDetail";
 
 const ObraList = () => {
-    const [obras, setObras] = useState([])
+  const [obras, setObras] = useState([]);
 
-    const [obraSelecionada, setObraSelecionada] = useState({});
+  const [obraSelecionada, setObraSelecionada] = useState({});
+
+    const [obrasModal, setObrasModal] = useState(false)
+
+  const addItem = (obraIndex) => {
+    const obra = { [obraIndex]: Number(obraSelecionada[obraIndex] || 0) + 1 };
+    setObraSelecionada({
+      ...obraSelecionada,
+      ...obra,
+    });
+  };
+
+  const removeItem = (obraIndex) => {
+    const obra = { [obraIndex]: Number(obraSelecionada[obraIndex] || 0) - 1 };
+    setObraSelecionada({
+      ...obraSelecionada,
+      ...obra,
+    });
+  };
+
+  const GetList = async () => {
+    const response = await ObraService.getList();
+    setObras(response);
+  };
+
+  const getObraById = async (obraId) => {
+      const response = await ObraService.getById(obraId)
+      setObrasModal(response);
+  }
+
+  useEffect(() => {
+    GetList();
+  }, []);
 
 
 
-    const addItem = (obraIndex) => {
-        const obra = { [obraIndex]: Number(obraSelecionada[obraIndex] || 0) + 1 }
-        setObraSelecionada({
-            ...obraSelecionada, ...obra
-        })
-    }
 
-
-    const removeItem = (obraIndex) => {
-        const obra = { [obraIndex]: Number(obraSelecionada[obraIndex] || 0) - 1 }
-        setObraSelecionada({
-            ...obraSelecionada, ...obra
-        })
+  return (
+    <div className="obra-list" >
+      {obras.map((obra, index) => (
+        <ObraListCard
+          obra={obra}
+          quantidadeSelecionada={+obraSelecionada[index]}
+          index={index}
+          onRemove={(Index) => removeItem(Index)}
+          onAdd={(Index) => addItem(Index)}
+          key={`obra-list-item-${index}`}
+          clickItem={(obraId) => getObraById(obraId)}
+        />
         
-    }
+      ))}
 
-
-    const GetList = async () => {
-        const response = await ObraService.getList()
-        setObras(response)
         
-        
-    }
+ 
+       {obrasModal && <ObrasDetail obra={obrasModal} closeModal={() => setObrasModal(false)}/>} 
+    
 
-    useEffect(() => {
-        GetList()
-    }, [])
-
-
-
-
-    return (<div className="obra-list">
-        
-
-        {obras.map( (obra, index) => 
-        
-
-                <ObraListCard obra={obra} 
-                quantidadeSelecionada={+(obraSelecionada[index])} 
-                index={index} 
-                onRemove={Index => removeItem(Index)} 
-                onAdd={Index => addItem(Index)} 
-                key={`obra-list-item-${index}`} />
-
-            )
-        }
-    </div>)
-}
+    </div>
+  );
+};
 
 export default ObraList;

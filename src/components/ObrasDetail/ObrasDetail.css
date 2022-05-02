@@ -1,0 +1,74 @@
+.obras-card-item {
+    background-color: transparent;
+    color: #560966;
+    border: 1px solid #560966;
+    border-radius: 1rem;
+    padding: 10px;
+    width: 315px;
+    display: flex;
+    box-shadow: 5px 5px 5px 5px #3e13661e;
+    justify-content: space-around;
+    margin: 0.5rem;
+    font-weight: 600;
+    font-family: "Exo";
+    position: relative;
+  }
+  
+  .obras-card-item > div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .obras-card-item-titulo {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 100%;
+  }
+  
+  .obras-card-item-sinopse {
+    font-size: 11px;
+    padding: .3rem;
+    height: 65%;
+  }
+  
+  .obras-card-item-preco {
+    color: darkviolet;
+    font-size: 2.5em;
+  }
+  
+  .obras-card-item-foto {
+    z-index: 0;
+    margin: 0.6rem;
+    width: 200px;
+    border-radius: 12px;
+    border: 2px solid rgb(0, 0, 0);
+    margin-right: -60px;
+    transition: .2s all ease-in-out;
+    box-shadow: 5px 5px 5px 5px #00000049;
+  }
+  
+  @media (max-width: 400px) {
+    .obras-card-item {
+      width: 210px;
+      height: 100vh;
+    }
+  
+    .obras-card-item-foto {
+      height: 250px;
+      margin-top: 50px;
+      margin-right: -100px;
+    }
+  
+    .obras-card-item-preco {
+      font-size: 2em;
+    }
+  
+    .obras-card-item-title {
+      font-size: 1.5em;
+    }
+  
+    .obras-card-item-sinopse {
+      font-size: 0.9em;
+    }
+  }

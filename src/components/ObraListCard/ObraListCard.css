@@ -13,6 +13,8 @@
     font-weight: 600;
     font-family: "Exo";
     position: relative;
+    cursor: pointer;
+
   }
   
   .obra-card-item {
