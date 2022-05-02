@@ -1,6 +1,6 @@
-import logo from '../../assets/icons/matry.gif'
-import cart from '../../assets/icons/cart.svg'
-import './Header.css'
+import logo from "../../assets/icons/matry.gif";
+import cart from "../../assets/icons/cart.svg";
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -22,7 +22,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

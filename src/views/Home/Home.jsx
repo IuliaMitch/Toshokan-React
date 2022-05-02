@@ -1,18 +1,16 @@
-import './Home.css'
-import ObraList from '../../components/Obralist/ObraList'
-import Header from '../Header/Header'
-
+import "./Home.css";
+import ObraList from "../../components/Obralist/ObraList";
+import Header from "../Header/Header";
 
 const Home = () => {
-    return (
+  return (
     <div className="Home">
-        <Header/>
-        <div className="Home-container">
-            <ObraList/>
-        </div>
+      <Header />
+      <div className="Home-container">
+        <ObraList />
+      </div>
     </div>
-    )
-}
-
+  );
+};
 
 export default Home;
