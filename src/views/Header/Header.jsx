@@ -10,14 +10,14 @@ const Header = () => {
           <img
             src={logo}
             width="90px"
-            alt="logo Obras da Matry"
+            alt="logo da Matry"
             className="logo-icone"
           />
           <span className="logo-titulo">Okina Toshokan</span>
         </div>
         <div className="header-options Option">
           <button className="button-cart">
-            <img className="bi" src={cart} />
+            <img className="bi" src={cart} alt="cart" />
           </button>
         </div>
       </div>
