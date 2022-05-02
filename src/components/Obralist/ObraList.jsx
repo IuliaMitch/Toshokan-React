@@ -1,9 +1,10 @@
 import './ObraList.css'
-import { obras } from "../../mocks/obra"
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { ObraService } from 'services/ObraService';
 import ObraListCard from '../ObraListCard/ObraListCard';
 
 const ObraList = () => {
+    const [obras, setObras] = useState([])
 
     const [obraSelecionada, setObraSelecionada] = useState({});
 
@@ -22,13 +23,37 @@ const ObraList = () => {
         setObraSelecionada({
             ...obraSelecionada, ...obra
         })
+        
     }
 
 
+    const GetList = async () => {
+        const response = await ObraService.getList()
+        setObras(response)
+        
+        
+    }
+
+    useEffect(() => {
+        GetList()
+    }, [])
+
+
+
+
     return (<div className="obra-list">
-        {
-            obras.map((obra, index) => 
-                <ObraListCard obra={obra} quantidadeSelecionada={obraSelecionada[index]} index={index} key={`obra-list-item-${index}`}/>
+        
+
+        {obras.map( (obra, index) => 
+        
+
+                <ObraListCard obra={obra} 
+                quantidadeSelecionada={+(obraSelecionada[index])} 
+                index={index} 
+                onRemove={Index => removeItem(Index)} 
+                onAdd={Index => addItem(Index)} 
+                key={`obra-list-item-${index}`} />
+
             )
         }
     </div>)

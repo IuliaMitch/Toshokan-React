@@ -4,15 +4,12 @@ import star from '../../assets/icons/star.svg'
 
 
 
-const ObraListCard = ({obra, quantidadeSelecionada, index}) => {
+const ObraListCard = ({obra, quantidadeSelecionada, index, onRemove, onAdd}) => {
 
 
-    const removeItem = (i) => console.log('remover' + i);
-	const addItem = (i) => console.log('adicionar' + i);
 
-
-    const badgeCounter = (canRender, index) => Boolean(canRender) && (<span className="obra-list-item-badge"> {quantidadeSelecionada[index]}</span>)
-    const buttonRemove = (canRender, index) => Boolean(canRender) && (<button className='actions-remove' onClick={() => removeItem(index)}>Remover</button>)
+    const badgeCounter = (canRender) => Boolean(canRender) && (<span className="obra-list-item-badge"> {quantidadeSelecionada}</span>)
+    const buttonRemove = (canRender, index) => Boolean(canRender) && (<button className='actions-remove' onClick={() => onRemove(index)}>Remover</button>)
 
 
 
@@ -21,7 +18,7 @@ const ObraListCard = ({obra, quantidadeSelecionada, index}) => {
 
     return (
         <div className="obra-list-item" key={`obra-list-item-${index}`}>
-        {badgeCounter(quantidadeSelecionada[index], index)}
+        {badgeCounter(quantidadeSelecionada)}
         <div>
             <div className="obra-list-item-nome">{obra.nome}</div>
             <div className="obra-list-item-nota">
@@ -33,9 +30,9 @@ const ObraListCard = ({obra, quantidadeSelecionada, index}) => {
                 {obra.sinopse}
             </div>
             <div className="obra-list-item-actions actions">
-                <button className={`actions-add ${!quantidadeSelecionada[index] && "btn"}`} onClick={() => addItem(index)}> Adicionar </button>
+                <button className={`actions-add ${!quantidadeSelecionada && "btn"}`} onClick={() => onAdd(index)}> Adicionar </button>
                 {
-                    buttonRemove(quantidadeSelecionada[index], index)
+                    buttonRemove(quantidadeSelecionada, index)
                 }
             </div>
         </div>
