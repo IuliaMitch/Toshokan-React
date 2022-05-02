@@ -54,8 +54,7 @@ const ObraList = () => {
           onRemove={(Index) => removeItem(Index)}
           onAdd={(Index) => addItem(Index)}
           key={`obra-list-item-${index}`}
-          clickItem={(obraId) => getObraById(obraId)}
-        />
+          clickItem={(obraId) => getObraById(obraId)} />
         
       ))}
 
@@ -69,3 +68,4 @@ const ObraList = () => {
 };
 
 export default ObraList;
+    
