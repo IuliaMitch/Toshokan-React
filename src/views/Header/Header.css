@@ -79,6 +79,11 @@
       width: 20%;
       margin-left: 1rem;
     }
+    .row {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
   }
   
   @media (max-width: 700px) {
@@ -116,7 +121,28 @@
     }
   }
 
-  .button-cart {
+  @media (max-width: 400px) {
+    .Header {
+      max-width: 250px;
+    }
+  
+    .row {
+      column-gap: 20px;
+    }
+  
+  
+    .Logo {
+      width: 100%;
+    }
+  
+  
+    .Logo-titulo {
+      font-size: 1.5em;
+    }
+  }
+
+  .button {
+    display: flex;
     height: 30px;
     width: 30px;
     padding: .1rem;
@@ -128,7 +154,7 @@
     cursor: pointer;
     margin: .5rem;
   }
-  .button-cart:hover {
+  .button:hover {
     transform: scale(1.1);
     
   }

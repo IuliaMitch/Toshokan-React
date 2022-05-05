@@ -1,12 +1,11 @@
 import logo from "../../assets/icons/matry.gif";
 import cart from "../../assets/icons/cart.svg";
-import player from "./player";
+import cloud from '../../assets/icons/cloud-plus.svg'
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ createObra }) => {
   return (
     <header className="home-header Header">
-      <player/>
       <div className="row">
         <div className="header-logo Logo">
           <img
@@ -18,8 +17,11 @@ const Header = () => {
           <span className="logo-titulo">Okina Toshokan</span>
         </div>
         <div className="header-options Option">
-          <button className="button-cart">
-            <img className="bi" src={cart} alt="cart" />
+          <button type="button" className="button cloud" onClick={() => createObra()}>
+          <img className="bi bi-cloud" src={cloud} alt="Adicionar Obra" />
+          </button>
+          <button className="button cart">
+            <img className="bi bi-cart" src={cart} alt="cart" />
           </button>
         </div>
       </div>
