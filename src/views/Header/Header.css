@@ -160,6 +160,12 @@
     
   }
  .bi {
+    transform: translateY(3px);
     width: 1.5rem;
   }
   
+
+.activated-obra {
+  background: rgba(148, 0, 211);
+  color: white;
+}

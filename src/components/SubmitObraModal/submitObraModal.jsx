@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import "./submitObraModal.css";
 import { ObraService } from "services/ObraService";
+import { ActionMode } from "constants/index";
 
-const SubmitObraModal = ({ closeModal, onCreateObra }) => {
+const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
   let form = {
     nome: "",
     sinopse: "",

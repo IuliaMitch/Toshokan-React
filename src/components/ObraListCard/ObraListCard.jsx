@@ -1,5 +1,6 @@
 import "./ObraListCard.css";
 import star from "../../assets/icons/star.svg";
+import { ActionMode } from "constants/index";
 
 const ObraListCard = ({
   obra,
@@ -8,14 +9,21 @@ const ObraListCard = ({
   onRemove,
   onAdd,
   clickItem,
+  mode,
 }) => {
   const badgeCounter = (canRender) =>
     Boolean(canRender) && (
       <span className="obra-list-item-badge"> {quantidadeSelecionada}</span>
     );
+
+  const badgeAction = (canRender) => {
+    if (canRender) return <span className="obra-list-item-tag"> {mode} </span>;
+  };
+
   const buttonRemove = (canRender, index) =>
     Boolean(canRender) && (
       <button
+        disabled={mode !== ActionMode.NORMAL}
         className="actions-remove"
         onClick={(e) => {
           e.stopPropagation();
@@ -27,8 +35,14 @@ const ObraListCard = ({
     );
 
   return (
-    <div className="obra-list-item"  onClick={() => clickItem(obra._id)}>
+    <div
+      className={`obra-list-item ${
+        mode !== ActionMode.NORMAL && "obra-list-item-disable"
+      }`}
+      onClick={() => clickItem(obra._id)}
+    >
       {badgeCounter(quantidadeSelecionada)}
+      {badgeAction(mode !== ActionMode.NORMAL)}
       <div>
         <div className="obra-list-item-nome">{obra.nome}</div>
         <div className="obra-list-item-nota">
@@ -38,8 +52,12 @@ const ObraListCard = ({
         <div className="obra-list-item-sinopse">{obra.sinopse}</div>
         <div className="obra-list-item-actions actions">
           <button
+            disabled={mode !== ActionMode.NORMAL}
             className={`actions-add ${!quantidadeSelecionada && "btn"}`}
-            onClick={(e) => { e.stopPropagation(); onAdd(index)}}
+            onClick={(e) => {
+              e.stopPropagation();
+              onAdd(index);
+            }}
           >
             {" "}
             Adicionar{" "}
