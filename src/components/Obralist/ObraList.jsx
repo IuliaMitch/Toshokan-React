@@ -4,7 +4,7 @@ import { ObraService } from "services/ObraService";
 import ObraListCard from "../ObraListCard/ObraListCard";
 import ObrasDetail from "../ObrasDetail/ObrasDetail";
 
-const ObraList = () => {
+const ObraList = ({ createdObra }) => {
   const [obras, setObras] = useState([]);
 
   const [obraSelecionada, setObraSelecionada] = useState({});
@@ -35,7 +35,17 @@ const ObraList = () => {
   const getObraById = async (obraId) => {
       const response = await ObraService.getById(obraId)
       setObrasModal(response);
+
   }
+
+  const addObra = (obra) => {
+    const list = [...obras, obra]
+    setObras(list)
+  };
+
+  useEffect(() => {
+    if(createdObra) addObra(createdObra);
+  }, [createdObra])
 
   useEffect(() => {
     GetList();

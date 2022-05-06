@@ -9,7 +9,6 @@ const ObraListCard = ({
   onAdd,
   clickItem,
 }) => {
-    console.log(clickItem)
   const badgeCounter = (canRender) =>
     Boolean(canRender) && (
       <span className="obra-list-item-badge"> {quantidadeSelecionada}</span>
