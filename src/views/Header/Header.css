@@ -169,3 +169,8 @@
   background: rgba(148, 0, 211);
   color: white;
 }
+
+.delete-obra {
+  background: #d30000ac;
+  color: white;
+}

@@ -17,7 +17,7 @@ const ObraListCard = ({
     );
 
   const badgeAction = (canRender) => {
-    if (canRender) return <span className="obra-list-item-tag"> {mode} </span>;
+    if (canRender) return <span className={`obra-list-item-tag ${mode === ActionMode.DELETAR && 'obra-list-item-tag-delete'}`}> {mode} </span>;
   };
 
   const buttonRemove = (canRender, index) =>

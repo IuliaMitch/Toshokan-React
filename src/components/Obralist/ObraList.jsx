@@ -6,7 +6,7 @@ import ObrasDetail from "../ObrasDetail/ObrasDetail";
 import { ActionMode } from "constants/index";
 
 
-const ObraList = ({ createdObra, mode, updatedObra, deletedObra }) => {
+const ObraList = ({ createdObra, mode, updatedObra, deletedObra, editedObra }) => {
   const [obras, setObras] = useState([]);
 
   const [obraSelecionada, setObraSelecionada] = useState({});
@@ -36,7 +36,6 @@ const ObraList = ({ createdObra, mode, updatedObra, deletedObra }) => {
 
   const getObraById = async (obraId) => {
       const response = await ObraService.getById(obraId)
-      setObrasModal(response);
 
       const mapper = {
         [ActionMode.NORMAL]: () => setObrasModal(response),
@@ -56,7 +55,7 @@ const ObraList = ({ createdObra, mode, updatedObra, deletedObra }) => {
   }, [obras]);
 
   useEffect(() => {
-    if(createdObra && !obras.map(({id}) => id).includes(createdObra._id)){ 
+    if(createdObra && !obras.map(({id}) => id).includes(createdObra.id)){ 
       addObra(createdObra);
     }
   }, [addObra, createdObra, obras])
@@ -64,6 +63,10 @@ const ObraList = ({ createdObra, mode, updatedObra, deletedObra }) => {
   useEffect(() => {
     GetList();
   }, []);
+
+  useEffect(() => {
+    GetList();
+  }, [editedObra, deletedObra]);
 
 
 

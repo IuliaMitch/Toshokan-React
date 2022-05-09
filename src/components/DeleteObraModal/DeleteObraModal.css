@@ -1,0 +1,40 @@
+.delete-obra-modal {
+    margin-top: -20px;
+  }
+  
+  .delete-obra-modal > div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .delete-obra-modal-foto {
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+    width: 80px;
+    border-radius: 1rem;
+  }
+  
+  .delete-obra-modal-confirmar,
+  .delete-obra-modal-cancelar {
+    border: none;
+    border-radius: 5px;
+    font-family: "Exo", sans-serif;
+    padding: 5px;
+    max-width: 280px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 48%;
+    color: white;
+  }
+  
+  .delete-obra-modal-confirmar {
+    background-color: darkviolet;
+  }
+  
+  .delete-obra-modal-cancelar {
+    background-color: red;
+  }

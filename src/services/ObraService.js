@@ -43,12 +43,17 @@ export const ObraService = {
                 "Content-Type": "application/json"
             }
         }).then(parseTransformItem),
-    updateById: (id) =>
-        fetch(Api.updateObraById(), {
-            method: "PUT"
+    updateById: (id, obra) =>
+        fetch(Api.updateObraById(id), {
+            method: "PUT",
+            body: JSON.stringify(obra),
+            mode: "cors", 
+            headers: {
+                "Content-Type": "application/json"
+            }
         }).then(parseResponse),
     deleteById: (id) =>
-        fetch(Api.deleteObraById(), {
+        fetch(Api.deleteObraById(id), { 
             method: "DELETE"
         }).then(parseResponse)
 };

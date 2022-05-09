@@ -4,14 +4,14 @@ import "./submitObraModal.css";
 import { ObraService } from "services/ObraService";
 import { ActionMode } from "constants/index";
 
-const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
+const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate, onUpdateObra }) => {
   let form = {
-    nome: "",
-    sinopse: "",
-    foto: "",
-    nota: "",
-    preco: "",
-    possuiAnime: "",
+    nome: obraToUpdate?.nome ?? '',
+    sinopse: obraToUpdate?.sinopse ?? '',
+    foto: obraToUpdate?.foto ?? '',
+    nota: obraToUpdate?.nota ?? '',
+    preco: obraToUpdate?.preco ?? '',
+    possuiAnime: obraToUpdate?.possuiAnime ?? '',
   };
 
   const [state, setState] = useState(form);
@@ -26,7 +26,7 @@ const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
     const response = !Boolean(
       state.nome.length &&
         state.nota.length &&
-        state.preco.length &&
+        String(state.preco).length &&
         state.sinopse.length &&
         state.foto.length
     );
@@ -37,12 +37,13 @@ const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
     canDisableSendButton();
   });
 
-  const createObra = async () => {
-    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split('\\').pop();
+  const handleSend = async () => {
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split(/\\|\//).pop();
 
     const { nome, foto, preco, nota, possuiAnime, sinopse } = state;
 
     const obra = {
+      ...(obraToUpdate && { _id: obraToUpdate?._id }),
       nome,
       sinopse,
       preco,
@@ -51,21 +52,45 @@ const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
       nota
     }
 
-    const response = await ObraService.create(obra);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => ObraService.create(obra),
+      [ActionMode.ATUALIZAR]: () => ObraService.updateById(obraToUpdate?._id, obra)
+    }
 
-    onCreateObra(response)
+    
+    const response = await serviceCall[mode]();
+
+   const actionResponse = {
+     [ActionMode.NORMAL]: () => onCreateObra(response),
+     [ActionMode.ATUALIZAR]: () => onUpdateObra(response)
+   }
+
+   actionResponse[mode]();
+
+
+   const reset = {
+     preco: '',
+     nome: '',
+     sinopse: '',
+     foto: '',
+     nota: '',
+     possuiAnime: '',
+   }
+
+
+   setState(reset)
 
 
     closeModal()
 
-
+   window.location.reload(true)
   }
 
   return (
     <Modal closeModal={closeModal}>
       <div className="add-obra-modal">
         <form autoComplete="off">
-          <h2>Cadastrar à Biblioteca</h2>
+          <h2>{ ActionMode.ATUALIZAR === mode ? 'Atualizar' : 'Cadastrar à' } Biblioteca</h2>
           <div>
             <label htmlFor="preco" className="add-obra-modal-text">
               Preço:
@@ -139,13 +164,12 @@ const SubmitObraModal = ({ mode, closeModal, onCreateObra, obraToUpdate }) => {
               id="foto"
               type="file"
               accept="image/png, image/gif, image/jpeg"
-              value={state.foto}
               onChange={(e) => handleChange(e, "foto")}
               required
             />
           </div>
-          <button onClick={createObra} type="button" disabled={canDisable} className="add-obra-modal-enviar">
-            Enviar
+          <button onClick={handleSend} type="button" disabled={canDisable} className="add-obra-modal-enviar">
+            {ActionMode.NORMAL === mode ? 'Enviar' : 'Atualizar'}
           </button>
         </form>
       </div>
