@@ -1,6 +1,6 @@
 ## Me chame de Iu
 Esse projeto tem o intuito de aprender ReactJS, com fetch e crud completo conectados a um banco de dados Mongo DB
-e uma API feita por min
+e uma API feitos por min
 
 
 # Deploy Front-end
